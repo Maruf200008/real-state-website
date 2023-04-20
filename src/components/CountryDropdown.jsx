@@ -5,6 +5,8 @@ import ReactLoading from "react-loading";
 import { useGetHomesQuery } from "../feature/houseApi";
 const CountryDropdown = () => {
   const [isOpen, seIsOpen] = useState(false);
+  const [country, setCountry] = useState("Loaction (Any)");
+  console.log(country);
 
   const { isLoading, isError, error, data: countries } = useGetHomesQuery();
   const uniqueCountries = {};
@@ -31,6 +33,7 @@ const CountryDropdown = () => {
           .map((c) => {
             return (
               <Menu.Item
+                onClick={() => setCountry(c.country)}
                 as="li"
                 key={c.id}
                 className=" cursor-pointer hover:text-violet-700 transition"
@@ -51,7 +54,7 @@ const CountryDropdown = () => {
       >
         <RiMapPinLine className="dropdown-icon-primary" />
         <div>
-          <div className="text-[15px] font-medium leading-tight">Country</div>
+          <div className="text-[15px] font-medium leading-tight">{country}</div>
           <div className="text-[13px]">Select Your Place</div>
         </div>
         {isOpen ? (
