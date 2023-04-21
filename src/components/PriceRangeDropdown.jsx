@@ -1,17 +1,27 @@
 import { Menu } from "@headlessui/react";
 import React, { useState } from "react";
-import { RiArrowDownSLine, RiArrowUpSLine, RiWallet3Line } from "react-icons/ri";
+import {
+  RiArrowDownSLine,
+  RiArrowUpSLine,
+  RiWallet3Line,
+} from "react-icons/ri";
 import ReactLoading from "react-loading";
+import { useDispatch } from "react-redux";
 import { useGetHomesQuery } from "../feature/houseApi";
+import { addPriceRange } from "../feature/housesSlice";
 const PriceRangeDropdown = () => {
   const [isOpen, seIsOpen] = useState(false);
   const [price, setPrice] = useState("Price Range (Any)");
+  const dispatch = useDispatch();
 
+  const handleClick = (value) => {
+    setPrice(value);
+    dispatch(addPriceRange(value));
+  };
 
   const { isLoading, isError, error, data: priceRanges } = useGetHomesQuery();
-  console.log(priceRanges)
-  const uniquePrice = {};
 
+  const uniquePrice = {};
 
   // what to render
   let conente;
@@ -25,8 +35,8 @@ const PriceRangeDropdown = () => {
     conente = (
       <Menu.Items className="dropdown-menu">
         {priceRanges
-        .slice()
-        .sort((a, b) => b.price - a.price)
+          .slice()
+          .sort((a, b) => b.price - a.price)
           .filter((p) => {
             if (uniquePrice[p.price]) {
               return false;
@@ -37,7 +47,7 @@ const PriceRangeDropdown = () => {
           .map((p) => {
             return (
               <Menu.Item
-                onClick={() => setPrice(p.price)}
+                onClick={() => handleClick(p.price)}
                 as="li"
                 key={p.id}
                 className=" cursor-pointer hover:text-violet-700 transition"

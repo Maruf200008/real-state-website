@@ -2,11 +2,19 @@ import { Menu } from "@headlessui/react";
 import React, { useState } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine, RiMapPinLine } from "react-icons/ri";
 import ReactLoading from "react-loading";
+import { useDispatch } from "react-redux";
 import { useGetHomesQuery } from "../feature/houseApi";
+import { addLocation } from "../feature/housesSlice";
 const CountryDropdown = () => {
   const [isOpen, seIsOpen] = useState(false);
   const [country, setCountry] = useState("Loaction (Any)");
-  console.log(country);
+  const dispatch = useDispatch();
+
+  const handleClick = (value) => {
+    console.log(value);
+    setCountry(value);
+    dispatch(addLocation(value));
+  };
 
   const { isLoading, isError, error, data: countries } = useGetHomesQuery();
   const uniqueCountries = {};
@@ -33,7 +41,7 @@ const CountryDropdown = () => {
           .map((c) => {
             return (
               <Menu.Item
-                onClick={() => setCountry(c.country)}
+                onClick={() => handleClick(c.country)}
                 as="li"
                 key={c.id}
                 className=" cursor-pointer hover:text-violet-700 transition"

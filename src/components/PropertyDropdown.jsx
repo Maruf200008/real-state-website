@@ -2,15 +2,21 @@ import { Menu } from "@headlessui/react";
 import React, { useState } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine, RiHome5Line } from "react-icons/ri";
 import ReactLoading from "react-loading";
+import { useDispatch } from "react-redux";
 import { useGetHomesQuery } from "../feature/houseApi";
+import { addProperty } from "../feature/housesSlice";
 const PropertyDropdown = () => {
   const [isOpen, seIsOpen] = useState(false);
   const [property, setProperty] = useState("Property (Any)");
+  const dispatch = useDispatch();
 
+  const handleClick = (value) => {
+    setProperty(value);
+    dispatch(addProperty(value));
+  };
 
   const { isLoading, isError, error, data: propertys } = useGetHomesQuery();
   const uniqueProperty = {};
-
 
   // what to render
   let conente;
@@ -34,7 +40,7 @@ const PropertyDropdown = () => {
           .map((p) => {
             return (
               <Menu.Item
-                onClick={() => setProperty(p.type)}
+                onClick={() => handleClick(p.type)}
                 as="li"
                 key={p.id}
                 className=" cursor-pointer hover:text-violet-700 transition"
@@ -55,7 +61,9 @@ const PropertyDropdown = () => {
       >
         <RiHome5Line className="dropdown-icon-primary" />
         <div>
-          <div className="text-[15px] font-medium leading-tight">{property}</div>
+          <div className="text-[15px] font-medium leading-tight">
+            {property}
+          </div>
           <div className="text-[13px]">Select Your Place</div>
         </div>
         {isOpen ? (
