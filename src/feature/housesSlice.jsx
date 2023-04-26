@@ -4,6 +4,7 @@ const initialState = {
   poperty: "",
   location: "",
   priceRange: "",
+  isFiltering: {},
 };
 
 const houseSlice = createSlice({
@@ -19,8 +20,20 @@ const houseSlice = createSlice({
     addPriceRange: (state, action) => {
       state.priceRange = action.payload;
     },
+    addFiltering: (state, action) => {
+      state.isFiltering = action.payload;
+    },
+    removeFiltering : (state) => {
+      state.isFiltering = {}
+      state.priceRange= ""
+      state.poperty = ""
+      state.location = ""
+
+
+    }
   },
 });
 
 export default houseSlice.reducer;
-export const { addLocation, addPriceRange, addProperty } = houseSlice.actions;
+export const { addLocation, addPriceRange, addProperty, addFiltering, removeFiltering } =
+  houseSlice.actions;

@@ -2,7 +2,7 @@ import { Menu } from "@headlessui/react";
 import React, { useState } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine, RiMapPinLine } from "react-icons/ri";
 import ReactLoading from "react-loading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetHomesQuery } from "../feature/houseApi";
 import { addLocation } from "../feature/housesSlice";
 const CountryDropdown = () => {
@@ -11,13 +11,15 @@ const CountryDropdown = () => {
   const dispatch = useDispatch();
 
   const handleClick = (value) => {
-    console.log(value);
     setCountry(value);
     dispatch(addLocation(value));
   };
 
   const { isLoading, isError, error, data: countries } = useGetHomesQuery();
+  const { isFiltering } = useSelector((state) => state.house);
   const uniqueCountries = {};
+  const { location } = isFiltering;
+  console.log(location);
 
   // what to render
   let conente;
@@ -62,7 +64,9 @@ const CountryDropdown = () => {
       >
         <RiMapPinLine className="dropdown-icon-primary" />
         <div>
-          <div className="text-[15px] font-medium leading-tight">{country}</div>
+          <div className="text-[15px] font-medium leading-tight">
+            {!location ? "Location (Any)" : country}
+          </div>
           <div className="text-[13px]">Select Your Place</div>
         </div>
         {isOpen ? (

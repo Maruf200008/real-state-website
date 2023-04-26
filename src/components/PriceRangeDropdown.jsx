@@ -6,7 +6,7 @@ import {
   RiWallet3Line,
 } from "react-icons/ri";
 import ReactLoading from "react-loading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetHomesQuery } from "../feature/houseApi";
 import { addPriceRange } from "../feature/housesSlice";
 const PriceRangeDropdown = () => {
@@ -18,7 +18,9 @@ const PriceRangeDropdown = () => {
     setPrice(value);
     dispatch(addPriceRange(value));
   };
-
+  const { isFiltering } = useSelector((state) => state.house);
+  const {priceRange} = isFiltering
+  
   const { isLoading, isError, error, data: priceRanges } = useGetHomesQuery();
 
   const uniquePrice = {};
@@ -68,7 +70,7 @@ const PriceRangeDropdown = () => {
       >
         <RiWallet3Line className="dropdown-icon-primary" />
         <div>
-          <div className="text-[15px] font-medium leading-tight">{price}</div>
+          <div className="text-[15px] font-medium leading-tight">{!priceRange ? "Price Range  (Any)" : price }</div>
           <div className="text-[13px]">Select Your Place</div>
         </div>
         {isOpen ? (

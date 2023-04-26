@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useGetHomesQuery } from "../feature/houseApi";
@@ -7,18 +7,13 @@ import House from "./House";
 // import House from "../components/House";
 // import {ImSpinner2} from 'react-icons/im'
 const HouseList = () => {
-  const { isLoading, isError, error, data: homes } = useGetHomesQuery();
-  const [isFilter, setIsFilter] = useState(false);
-  const { poperty, location, priceRange } = useSelector((state) => state.house);
-  console.log(poperty);
-  console.log(location);
-  console.log(priceRange);
-  console.log(homes);
-  useEffect(() => {
-    if (poperty || location || priceRange) {
-      setIsFilter(true);
-    }
-  }, [priceRange, location, poperty, isFilter]);
+  const { isFiltering } = useSelector((state) => state.house);
+  const {
+    isLoading,
+    isError,
+    error,
+    data: homes,
+  } = useGetHomesQuery(isFiltering);
 
   //   what to render
   let content = undefined;
@@ -30,20 +25,13 @@ const HouseList = () => {
   } else if (!isLoading && !isError && homes.length === 0) {
     content = <div> Content was not found!!!</div>;
   } else if (!isLoading && !isError && homes.length > 0) {
-    isFilter
-      ? (content = homes
-          .filter(
-            (home) =>
-              home.country === location ||
-              home.type === poperty ||
-              home.price === priceRange
-          )
-          .map((home) => (
-            <Link key={home.id} to={`/property/${home.id}`}>
-              {" "}
-              <House home={home} />{" "}
-            </Link>
-          )))
+    isFiltering
+      ? (content = homes.map((home) => (
+          <Link key={home.id} to={`/property/${home.id}`}>
+            {" "}
+            <House home={home} />{" "}
+          </Link>
+        )))
       : (content = homes.map((home) => (
           <Link key={home.id} to={`/property/${home.id}`}>
             {" "}

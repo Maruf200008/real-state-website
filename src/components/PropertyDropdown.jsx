@@ -2,7 +2,7 @@ import { Menu } from "@headlessui/react";
 import React, { useState } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine, RiHome5Line } from "react-icons/ri";
 import ReactLoading from "react-loading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetHomesQuery } from "../feature/houseApi";
 import { addProperty } from "../feature/housesSlice";
 const PropertyDropdown = () => {
@@ -14,6 +14,8 @@ const PropertyDropdown = () => {
     setProperty(value);
     dispatch(addProperty(value));
   };
+  const { isFiltering } = useSelector((state) => state.house);
+  const { poperty: filteringPoperty } = isFiltering || {};
 
   const { isLoading, isError, error, data: propertys } = useGetHomesQuery();
   const uniqueProperty = {};
@@ -62,7 +64,11 @@ const PropertyDropdown = () => {
         <RiHome5Line className="dropdown-icon-primary" />
         <div>
           <div className="text-[15px] font-medium leading-tight">
-            {property}
+            {property
+              ? !filteringPoperty
+                ? "Property (Any)"
+                : property
+              : property}
           </div>
           <div className="text-[13px]">Select Your Place</div>
         </div>
