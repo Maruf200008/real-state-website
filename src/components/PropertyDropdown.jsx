@@ -15,7 +15,7 @@ const PropertyDropdown = () => {
     dispatch(addProperty(value));
   };
   const { isFiltering } = useSelector((state) => state.house);
-  const { poperty: filteringPoperty } = isFiltering || {};
+  const { poperty } = isFiltering || {};
 
   const { isLoading, isError, error, data: propertys } = useGetHomesQuery();
   const uniqueProperty = {};
@@ -64,11 +64,7 @@ const PropertyDropdown = () => {
         <RiHome5Line className="dropdown-icon-primary" />
         <div>
           <div className="text-[15px] font-medium leading-tight">
-            {property
-              ? !filteringPoperty
-                ? "Property (Any)"
-                : property
-              : property}
+            {!poperty ? "Poperty (Any)" : property}
           </div>
           <div className="text-[13px]">Select Your Place</div>
         </div>

@@ -25,9 +25,9 @@ export const houseApi = apiSlice.injectEndpoints({
       },
     }),
     getHome: build.query({
-      query: ({ houseId }) => `/houses/${houseId}`,
+      query: (houseId) => `/houses/${houseId}`,
     }),
   }),
 });
 
-export const { useGetHomesQuery } = houseApi;
+export const { useGetHomesQuery, useGetHomeQuery } = houseApi;
