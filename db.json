@@ -15,7 +15,7 @@
       "year": "2016",
       "price": "110000",
       "agent": {
-        "image": "Agent1",
+        "image": "/src/assets/img/agents/agent1.png",
         "name": "Patricia Tullert",
         "phone": "0123 456 78910"
       }
@@ -35,7 +35,7 @@
       "year": "2016",
       "price": "140000",
       "agent": {
-        "image": "Agent2",
+        "image": "/src/assets/img/agents/agent2.png",
         "name": "Daryl Hawker",
         "phone": "0123 456 78910"
       }
@@ -55,7 +55,7 @@
       "year": "2016",
       "price": "170000",
       "agent": {
-        "image": "Agent3",
+        "image": "/src/assets/img/agents/agent3.png",
         "name": "Amado Smith",
         "phone": "0123 456 78910"
       }
@@ -75,7 +75,7 @@
       "year": "2016",
       "price": "200000",
       "agent": {
-        "image": "Agent4",
+        "image": "/src/assets/img/agents/agent4.png",
         "name": "Kaitlyn Gonzalez",
         "phone": "0123 456 78910"
       }
@@ -95,7 +95,7 @@
       "year": "2015",
       "price": "210000",
       "agent": {
-        "image": "Agent5",
+        "image": "/src/assets/img/agents/agent5.png",
         "name": "Grover Robinson",
         "phone": "0123 456 78910"
       }
@@ -115,7 +115,7 @@
       "year": "2014",
       "price": "220000",
       "agent": {
-        "image": "Agent6",
+        "image": "/src/assets/img/agents/agent6.png",
         "name": "Karen Sorensen",
         "phone": "0123 456 78910"
       }
@@ -135,7 +135,7 @@
       "year": "2012",
       "price": "20000",
       "agent": {
-        "image": "Agent7",
+        "image": "/src/assets/img/agents/agent7.png",
         "name": "Jawhar Shamil Naser",
         "phone": "0123 456 78910"
       }
@@ -155,7 +155,7 @@
       "year": "2011",
       "price": "30000",
       "agent": {
-        "image": "Agent8",
+        "image": "/src/assets/img/agents/agent8.png",
         "name": "Juana Douglass",
         "phone": "0123 456 78910"
       }
@@ -175,7 +175,7 @@
       "year": "2011",
       "price": "40000",
       "agent": {
-        "image": "Agent9",
+        "image": "/src/assets/img/agents/agent9.png",
         "name": "Jerry Schenck",
         "phone": "0123 456 78910"
       }
@@ -195,7 +195,7 @@
       "year": "2015",
       "price": "117000",
       "agent": {
-        "image": "Agent10",
+        "image": "/src/assets/img/agents/agent10.png",
         "name": "Vera Levesque",
         "phone": "0123 456 78910"
       }
@@ -215,7 +215,7 @@
       "year": "2019",
       "price": "145000",
       "agent": {
-        "image": "Agent11",
+        "image": "/src/assets/img/agents/agent11.png",
         "name": "Sofia Gomes",
         "phone": "0123 456 78910"
       }
@@ -235,7 +235,7 @@
       "year": "2015",
       "price": "139000",
       "agent": {
-        "image": "Agent12",
+        "image": "/src/assets/img/agents/agent12.png",
         "name": "Raymond Hood",
         "phone": "0123 456 78910"
       }
@@ -255,7 +255,7 @@
       "year": "2014",
       "price": "180000",
       "agent": {
-        "image": "Agent1",
+        "image": "/src/assets/img/agents/agent1.png",
         "name": "Patricia Tullert",
         "phone": "0123 456 78910"
       }
@@ -275,7 +275,7 @@
       "year": "2011",
       "price": "213000",
       "agent": {
-        "image": "Agent2",
+        "image": "/src/assets/img/agents/agent2.png",
         "name": "Daryl Hawker",
         "phone": "0123 456 78910"
       }
@@ -295,7 +295,7 @@
       "year": "2013",
       "price": "221000",
       "agent": {
-        "image": "Agent3",
+        "image": "/src/assets/img/agents/agent3.png",
         "name": "Amado Smith",
         "phone": "0123 456 78910"
       }
@@ -315,7 +315,7 @@
       "year": "2011",
       "price": "21000",
       "agent": {
-        "image": "Agent4",
+        "image": "/src/assets/img/agents/agent4.png",
         "name": "Kaitlyn Gonzalez",
         "phone": "0123 456 78910"
       }
@@ -335,7 +335,7 @@
       "year": "2012",
       "price": "32000",
       "agent": {
-        "image": "Agent5",
+        "image": "/src/assets/img/agents/agent5.png",
         "name": "Grover Robinson",
         "phone": "0123 456 78910"
       }
@@ -355,7 +355,7 @@
       "year": "2010",
       "price": "38000",
       "agent": {
-        "image": "Agent6",
+        "image": "/src/assets/img/agents/agent6.png",
         "name": "Karen Sorensen",
         "phone": "0123 456 78910"
       }

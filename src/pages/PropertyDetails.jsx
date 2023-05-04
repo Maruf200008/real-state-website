@@ -8,18 +8,6 @@ const PropertyDetails = () => {
   const { id } = useParams();
   const { isLoading, isError, error, data: house } = useGetHomeQuery(id);
   console.log(house);
-  const {
-    address,
-    bathrooms,
-    bedrooms,
-    country,
-    description,
-    name,
-    type,
-    imageLg,
-    price,
-    surface,
-  } = house;
 
   // what to render
   let content;
@@ -46,46 +34,48 @@ const PropertyDetails = () => {
       <div>
         <div className=" flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className=" text-2xl font-semibold">{name}</h2>
-            <h3 className=" text-lg mb-4">{address}</h3>
+            <h2 className=" text-2xl font-semibold">{house.name}</h2>
+            <h3 className=" text-lg mb-4">{house.address}</h3>
           </div>
           <div className="mb-4 lg:mb-0 flex gap-x-2 text-sm">
             <div className=" bg-green-500 text-white px-3 rounded-full">
-              {type}
+              {house.type}
             </div>
             <div className=" bg-violet-500 text-white px-3 rounded-full">
-              {country}
+              {house.country}
             </div>
           </div>
           <div className=" text-3xl font-semibold text-violet-600">
             {" "}
-            $ {price}
+            $ {house.price}
           </div>
         </div>
         <div className=" flex flex-col items-start gap-8 lg:flex-row">
           <div className=" max-w-[768px]">
             <div className=" mb-8">
-              <img src={imageLg} alt="photo" />
+              <img src={house.imageLg} alt="photo" />
             </div>
             <div className="flex gap-x-6 text-violet-700 mb-6">
               <div className=" flex gap-x-2 items-center">
                 <BiBed size={25} />
-                <div>{bedrooms}</div>
+                <div>{house.bedrooms}</div>
               </div>
               <div className=" flex gap-x-2 items-center">
                 <BiBath size={25} />
-                <div>{bathrooms}</div>
+                <div>{house.bathrooms}</div>
               </div>
               <div className=" flex gap-x-2 items-center">
                 <BiArea size={25} />
-                <div>{surface}</div>
+                <div>{house.surface}</div>
               </div>
             </div>
-            <div>{description}</div>
+            <div>{house.description}</div>
           </div>
           <div>
             <div>
-              <div></div>
+              <div>
+                <img src={house.agent.image} alt="" />
+              </div>
               <div></div>
             </div>
           </div>
@@ -93,7 +83,6 @@ const PropertyDetails = () => {
       </div>
     );
   }
-  console.log(house);
 
   return (
     <section>
