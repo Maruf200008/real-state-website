@@ -1,6 +1,5 @@
 // import routers and route
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import PropertyDetails from "./pages/PropertyDetails";
@@ -13,7 +12,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/property/:id" element={<PropertyDetails />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

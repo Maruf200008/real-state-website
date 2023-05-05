@@ -1,7 +1,7 @@
 import React from "react";
 import { BiArea, BiBath, BiBed } from "react-icons/bi";
 import { ImSpinner2 } from "react-icons/im";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetHomeQuery } from "../feature/houseApi";
 
 const PropertyDetails = () => {
@@ -32,7 +32,7 @@ const PropertyDetails = () => {
   } else if (!isLoading && !isError && house?.id) {
     return (
       <div>
-        <div className=" flex flex-col lg:flex-row lg:items-center lg:justify-between">
+        <div className=" flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10 md:mb-3">
           <div>
             <h2 className=" text-2xl font-semibold">{house.name}</h2>
             <h3 className=" text-lg mb-4">{house.address}</h3>
@@ -71,13 +71,51 @@ const PropertyDetails = () => {
             </div>
             <div>{house.description}</div>
           </div>
-          <div>
-            <div>
-              <div>
-                <img src={house.agent.image} alt="" />
+          <div className=" flex-1 bg-white w-full mb-8 border border-gray-300 rounded-lg px-6 py-8">
+            <div className=" flex items-center gap-x-4 mb-8">
+              <div className=" w-20 h-20 p-1 border border-gray-300 rounded-full">
+                <img src={house.agent.image} alt="agent image" />
               </div>
-              <div></div>
+              <div>
+                <div className=" font-bold text-lg">{house.agent.name}</div>
+                <Link to="" className=" text-violet-700 text-sm">
+                  {" "}
+                  View Listing
+                </Link>
+              </div>
             </div>
+            {/* form */}
+            <form className=" flex flex-col gap-y-4">
+              <input
+                className="border border-gray-300 focus:border-violet-700 focus:outline-none rounded w-full px-4 h-14 text-base"
+                type="text"
+                placeholder="Name"
+              />
+              <input
+                className="border border-gray-300 focus:border-violet-700 focus:outline-none rounded w-full px-4 h-14 text-base"
+                type="text"
+                placeholder="Email"
+              />
+
+              <input
+                className="border border-gray-300 focus:border-violet-700 focus:outline-none rounded w-full px-4 h-14  text-base"
+                type="text"
+                placeholder="Phone"
+              />
+              <textarea
+                className="border border-gray-300 focus:border-violet-700 outline-none resize-none rounded w-full p-4 h-36 text-base text-gray-400"
+                placeholder="Message"
+                defaultValue="Hellow, I am interested in [Mordern Apartment]"
+              ></textarea>
+              <div className=" flex gap-x-2">
+                <button className=" bg-violet-700 hover:bg-violet-800 text-white rounded p-4 text-base font-semibold w-full transition">
+                  Send Message
+                </button>
+                <button className=" border border-violet-700 text-violet-700 hover:border-violet-500 rounded p-4 w-full transition font-semibold   text-base">
+                  Call
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
